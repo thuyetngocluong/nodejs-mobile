@@ -12,7 +12,7 @@ if (common.isWindows) {
     process.stderr;
     return;
   }
-  const python = process.env.PYTHON || 'python';
+  const python = process.env.PYTHON || 'python3';
   const script = fixtures.path('spawn_closed_stdio.py');
   const proc = spawn(python, [script, process.execPath, __filename, 'child']);
   proc.on('exit', common.mustCall(function(exitCode) {

@@ -1127,7 +1127,7 @@ class MetaBuildWrapper(object):
     print_env('LLVM_FORCE_HEAD_REVISION')
 
     if cmd[0] == self.executable:
-      cmd = ['python'] + cmd[1:]
+      cmd = ['python3'] + cmd[1:]
     self.Print(*[shell_quoter(arg) for arg in cmd])
 
   def PrintJSON(self, obj):

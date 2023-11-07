@@ -271,7 +271,7 @@ hooks = [
     'name': 'disable_depot_tools_selfupdate',
     'pattern': '.',
     'action': [
-        'python',
+        'python3',
         'v8/third_party/depot_tools/update_depot_tools_toggle.py',
         '--disable',
     ],
@@ -283,7 +283,7 @@ hooks = [
     'name': 'landmines',
     'pattern': '.',
     'action': [
-        'python',
+        'python3',
         'v8/build/landmines.py',
         '--landmine-scripts',
         'v8/tools/get_landmines.py',
@@ -374,35 +374,35 @@ hooks = [
     'name': 'sysroot_arm',
     'pattern': '.',
     'condition': '(checkout_linux and checkout_arm)',
-    'action': ['python', 'v8/build/linux/sysroot_scripts/install-sysroot.py',
+    'action': ['python3', 'v8/build/linux/sysroot_scripts/install-sysroot.py',
                '--arch=arm'],
   },
   {
     'name': 'sysroot_arm64',
     'pattern': '.',
     'condition': '(checkout_linux and checkout_arm64)',
-    'action': ['python', 'v8/build/linux/sysroot_scripts/install-sysroot.py',
+    'action': ['python3', 'v8/build/linux/sysroot_scripts/install-sysroot.py',
                '--arch=arm64'],
   },
   {
     'name': 'sysroot_x86',
     'pattern': '.',
     'condition': '(checkout_linux and (checkout_x86 or checkout_x64))',
-    'action': ['python', 'v8/build/linux/sysroot_scripts/install-sysroot.py',
+    'action': ['python3', 'v8/build/linux/sysroot_scripts/install-sysroot.py',
                '--arch=x86'],
   },
   {
     'name': 'sysroot_mips',
     'pattern': '.',
     'condition': '(checkout_linux and checkout_mips)',
-    'action': ['python', 'v8/build/linux/sysroot_scripts/install-sysroot.py',
+    'action': ['python3', 'v8/build/linux/sysroot_scripts/install-sysroot.py',
                '--arch=mips'],
   },
   {
     'name': 'sysroot_x64',
     'pattern': '.',
     'condition': 'checkout_linux and checkout_x64',
-    'action': ['python', 'v8/build/linux/sysroot_scripts/install-sysroot.py',
+    'action': ['python3', 'v8/build/linux/sysroot_scripts/install-sysroot.py',
                '--arch=x64'],
   },
   {
@@ -432,14 +432,14 @@ hooks = [
     'name': 'win_toolchain',
     'pattern': '.',
     'condition': 'checkout_win',
-    'action': ['python', 'v8/build/vs_toolchain.py', 'update'],
+    'action': ['python3', 'v8/build/vs_toolchain.py', 'update'],
   },
   {
     # Update the Mac toolchain if necessary.
     'name': 'mac_toolchain',
     'pattern': '.',
     'condition': 'checkout_mac',
-    'action': ['python', 'v8/build/mac_toolchain.py'],
+    'action': ['python3', 'v8/build/mac_toolchain.py'],
   },
   # Pull binutils for linux, enabled debug fission for faster linking /
   # debugging when used with clang on Ubuntu Precise.
@@ -449,7 +449,7 @@ hooks = [
     'pattern': 'v8/third_party/binutils',
     'condition': 'host_os == "linux"',
     'action': [
-        'python',
+        'python3',
         'v8/third_party/binutils/download.py',
     ],
   },
@@ -459,13 +459,13 @@ hooks = [
     'pattern': '.',
     # clang not supported on aix
     'condition': 'host_os != "aix"',
-    'action': ['python', 'v8/tools/clang/scripts/update.py'],
+    'action': ['python3', 'v8/tools/clang/scripts/update.py'],
   },
   {
     # Update LASTCHANGE.
     'name': 'lastchange',
     'pattern': '.',
-    'action': ['python', 'v8/build/util/lastchange.py',
+    'action': ['python3', 'v8/build/util/lastchange.py',
                '-o', 'v8/build/util/LASTCHANGE'],
   },
   {
@@ -473,7 +473,7 @@ hooks = [
     'pattern': '.',
     'condition': 'checkout_fuchsia',
     'action': [
-      'python',
+      'python3',
       'v8/build/fuchsia/update_sdk.py',
       '--boot-images={checkout_fuchsia_boot_images}',
     ],
@@ -486,14 +486,14 @@ hooks = [
     'name': 'lld/mac',
     'pattern': '.',
     'condition': 'host_os == "mac" and checkout_fuchsia',
-    'action': ['python', 'v8/tools/clang/scripts/download_lld_mac.py'],
+    'action': ['python3', 'v8/tools/clang/scripts/download_lld_mac.py'],
   },
   {
       # Mac does not have llvm-objdump, download it for cross builds in Fuchsia.
     'name': 'llvm-objdump',
     'pattern': '.',
     'condition': 'host_os == "mac" and checkout_fuchsia',
-    'action': ['python', 'v8/tools/clang/scripts/download_objdump.py'],
+    'action': ['python3', 'v8/tools/clang/scripts/download_objdump.py'],
   },
   {
     'name': 'mips_toolchain',
@@ -523,7 +523,7 @@ hooks = [
     'pattern': '.',
     'condition': 'check_v8_header_includes',
     'action': [
-      'python',
+      'python3',
       'v8/tools/generate-header-include-checks.py',
     ],
   },
