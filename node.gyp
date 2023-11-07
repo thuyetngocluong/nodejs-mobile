@@ -936,7 +936,7 @@
               'outputs': ['<(SHARED_INTERMEDIATE_DIR)/openssl.def'],
               'process_outputs_as_sources': 1,
               'action': [
-                'python',
+                'python3',
                 'tools/mkssldef.py',
                 '<@(mkssldef_flags)',
                 '-o',
@@ -961,7 +961,7 @@
             '<(SHARED_INTERMEDIATE_DIR)/node_javascript.cc',
           ],
           'action': [
-            'python', '<@(_inputs)',
+            'python3', '<@(_inputs)',
             '--target', '<@(_outputs)',
           ],
         },

@@ -1668,7 +1668,7 @@ def make_bin_override():
   # sys.executable. This directory will be prefixed to the PATH, so that
   # other tools that shell out to `python` will use the appropriate python
 
-  which_python = which('python')
+  which_python = which('python3')
   if (which_python and
       os.path.realpath(which_python) == os.path.realpath(sys.executable)):
     return
@@ -1679,7 +1679,7 @@ def make_bin_override():
   except OSError as e:
     if e.errno != errno.EEXIST: raise e
 
-  python_link = os.path.join(bin_override, 'python')
+  python_link = os.path.join(bin_override, 'python3')
   try:
     os.unlink(python_link)
   except OSError as e:
@@ -1773,8 +1773,8 @@ config = {
 }
 
 # Not needed for trivial case. Useless when it's a win32 path.
-if sys.executable != 'python' and ':\\' not in sys.executable:
-  config['PYTHON'] = sys.executable
+if sys.executable != 'python3' and ':\\' not in sys.executable:
+  config['python3'] = sys.executable
 
 if options.prefix:
   config['PREFIX'] = options.prefix
@@ -1818,6 +1818,6 @@ gyp_args += args
 if warn.warned and not options.verbose:
   warn('warnings were emitted in the configure phase')
 
-print_verbose("running: \n    " + " ".join(['python', 'tools/gyp_node.py'] + gyp_args))
+print_verbose("running: \n    " + " ".join(['python3', 'tools/gyp_node.py'] + gyp_args))
 run_gyp(gyp_args)
 info('configure completed successfully')

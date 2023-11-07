@@ -157,7 +157,7 @@ class WinTool(object):
     # first and only link. We still tell link to generate a manifest, but we
     # only use that to assert that our simpler process did not miss anything.
     variables = {
-      'python': sys.executable,
+      'python3': sys.executable,
       'arch': arch,
       'out': out,
       'ldcmd': ldcmd,
